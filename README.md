@@ -10,8 +10,9 @@
 
 ### TODO:
 
-- Bundle and ship code
 - How improve styling
+  - Linking CSS files?
+  - Sharing styles
 
 #### Components
 

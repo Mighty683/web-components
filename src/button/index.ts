@@ -1,6 +1,6 @@
 import styles from "./button.scss?inline";
 
-class WebButton extends HTMLElement {
+export class WebButton extends HTMLElement {
   private _shadowRoot: ShadowRoot;
   private _type: string | null;
   constructor() {

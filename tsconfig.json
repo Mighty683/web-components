@@ -1,7 +1,9 @@
 {
   "include": ["src", "styles.d.ts"],
+  "exclude": ["src/**/*.stories.ts"],
   "compilerOptions": {
     "target": "ESNext",
+    "outDir": "dist",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": [],
     "allowJs": false,
@@ -14,7 +16,8 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "jsx": "react"
   }
 }
