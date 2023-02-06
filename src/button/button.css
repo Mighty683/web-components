@@ -1,0 +1,7 @@
+.web-button {
+  min-height: 50px;
+  min-width: 100px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+}
