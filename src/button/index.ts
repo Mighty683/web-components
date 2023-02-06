@@ -3,6 +3,9 @@ import styles from "./button.scss?inline";
 export class WebButton extends HTMLElement {
   private _shadowRoot: ShadowRoot;
   private _type: string | null;
+  static {
+    window.customElements.define("web-button", WebButton);
+  }
   constructor() {
     super();
     this._shadowRoot = this.attachShadow({ mode: "closed" });
@@ -31,5 +34,3 @@ export class WebButton extends HTMLElement {
     return button;
   }
 }
-
-window.customElements.define("web-button", WebButton);
