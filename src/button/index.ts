@@ -1,16 +1,16 @@
-import styles from "./button.css";
+import styles from "./button.scss?inline";
 
 class WebButton extends HTMLElement {
   private _shadowRoot: ShadowRoot;
   private _type: string | null;
   constructor() {
     super();
+    this._shadowRoot = this.attachShadow({ mode: "closed" });
     this._type = this.getAttribute("type");
     this.openShadowRoot();
   }
 
   private openShadowRoot() {
-    this._shadowRoot = this.attachShadow({ mode: "closed" });
     this._shadowRoot.appendChild(this.buildStyles());
     this._shadowRoot.appendChild(this.buildButtonEl());
   }
@@ -24,7 +24,8 @@ class WebButton extends HTMLElement {
 
   private buildButtonEl() {
     let button = document.createElement("button");
-    button.className = "web-button";
+    button.classList.add("web-button");
+    button.classList.add(`web-button--${this._type}`);
     button.innerHTML = this.innerHTML;
 
     return button;

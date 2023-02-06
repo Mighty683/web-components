@@ -1,0 +1,15 @@
+.web-button {
+  min-height: 40px;
+  min-width: 80px;
+  border-radius: 5px;
+  padding: 10px;
+  &--primary {
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+  }
+  &--secondary {
+    background-color: white;
+    border: 1px solid black;
+  }
+}
