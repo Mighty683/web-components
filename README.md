@@ -10,13 +10,9 @@
 
 ### TODO:
 
-- How improve styling
-  - Linking CSS files?
-  - Sharing styles
-
 #### Components
 
-- Text
+- Tooltip
 - Input
 - Select
   - MultiSelect

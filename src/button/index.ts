@@ -1,11 +1,18 @@
+import { ThemeCss } from "../theme";
 import styles from "./button.scss?inline";
 
 export class WebButton extends HTMLElement {
-  private _shadowRoot: ShadowRoot;
-  private _type: string | null;
+  static css: CSSStyleSheet;
   static {
     window.customElements.define("web-button", WebButton);
+    this.css = new CSSStyleSheet();
+    this.css.replaceSync(styles);
   }
+
+  private _shadowRoot: ShadowRoot;
+  private _type: string | null;
+  
+
   constructor() {
     super();
     this._shadowRoot = this.attachShadow({ mode: "closed" });
@@ -14,15 +21,8 @@ export class WebButton extends HTMLElement {
   }
 
   private openShadowRoot() {
-    this._shadowRoot.appendChild(this.buildStyles());
     this._shadowRoot.appendChild(this.buildButtonEl());
-  }
-
-  private buildStyles() {
-    let stylesElement = document.createElement("style");
-    stylesElement.innerHTML = styles;
-
-    return stylesElement;
+    this._shadowRoot.adoptedStyleSheets = [ThemeCss, WebButton.css];
   }
 
   private buildButtonEl() {
