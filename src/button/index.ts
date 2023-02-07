@@ -2,27 +2,27 @@ import { ThemeCss } from "../theme";
 import styles from "./button.scss?inline";
 
 export class WebButton extends HTMLElement {
-  static css: CSSStyleSheet;
+  private static _cssSheets: CSSStyleSheet[];
   static {
     window.customElements.define("web-button", WebButton);
-    this.css = new CSSStyleSheet();
-    this.css.replaceSync(styles);
+    let buttonCss = new CSSStyleSheet();
+    buttonCss.replaceSync(styles);
+    this._cssSheets = [ThemeCss, buttonCss];
   }
 
   private _shadowRoot: ShadowRoot;
   private _type: string | null;
-  
 
   constructor() {
     super();
     this._shadowRoot = this.attachShadow({ mode: "closed" });
     this._type = this.getAttribute("type");
-    this.openShadowRoot();
+    this.buildShadowRoot();
   }
 
-  private openShadowRoot() {
+  private buildShadowRoot() {
     this._shadowRoot.appendChild(this.buildButtonEl());
-    this._shadowRoot.adoptedStyleSheets = [ThemeCss, WebButton.css];
+    this._shadowRoot.adoptedStyleSheets = WebButton._cssSheets;
   }
 
   private buildButtonEl() {
