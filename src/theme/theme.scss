@@ -1,4 +1,19 @@
 :host {
+  // Sizes
+  --basic-unit: 8px;
+  --basic-unit-half: 4px;
+  --basic-height: 32px;
+  --basic-round: 8px;
+
+  // Colors
   --primary-color: #1c459e;
   --primary-background-color: #fff;
+  --error-color: #f30505;
+
+
+  // Font sizes
+  --font-size-s: 14px;
+
+  // Line heights
+  --line-height-s: 16px;
 }

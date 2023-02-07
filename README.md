@@ -5,15 +5,18 @@
 ### In progress:
 
 - Button
-  - Types
   - Disabled
+  - Animations
+- Input
+  - Animations
 
 ### TODO:
+
+- Setup unit tests
 
 #### Components
 
 - Tooltip
-- Input
 - Select
   - MultiSelect
   - Select with search

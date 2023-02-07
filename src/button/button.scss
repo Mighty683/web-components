@@ -1,8 +1,8 @@
 .web-button {
   cursor: pointer;
-  min-height: 40px;
-  min-width: 80px;
-  border-radius: 5px;
+  min-height: var(--basic-height);
+  min-width: calc(var(--basic-height) * 2);
+  border-radius: var(--basic-round);
   padding: 10px;
   &--primary {
     background-color: var(--primary-color);
