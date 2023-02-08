@@ -10,4 +10,7 @@ export default {
       fileName: 'index',
     },
   },
+  test: {
+    environment: 'happy-dom',
+  },
 };
