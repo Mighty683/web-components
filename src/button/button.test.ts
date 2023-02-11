@@ -1,4 +1,5 @@
 import { describe, it, afterEach, expect, vi } from 'vitest';
+import './index';
 
 describe('web-button', () => {
   afterEach(() => {

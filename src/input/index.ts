@@ -1,9 +1,10 @@
 import { ThemeCss } from '../theme';
+import { registerComponent } from '../utils/decorators';
 import styles from './input.scss?inline';
 
+@registerComponent('web-input')
 export class WebInput extends HTMLElement {
   private static _cssSheets: CSSStyleSheet[] = (function () {
-    window.customElements.define('web-input', WebInput);
     let inputCss = new CSSStyleSheet();
     inputCss.replaceSync(styles);
     return [ThemeCss, inputCss];
@@ -37,16 +38,6 @@ export class WebInput extends HTMLElement {
     `;
 
     return template;
-  }
-
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-    if (name === 'required' || name === 'label' || name === 'error') {
-      this[name] = newValue;
-      if (name === 'error') {
-        this.updateErrorElement();
-      }
-    }
-    this.updateInputElement();
   }
 
   private updateLabelElement() {
