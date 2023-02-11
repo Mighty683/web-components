@@ -8,6 +8,10 @@ import styles from './input.scss?inline';
 
 @registerComponent('web-input')
 export class WebInput extends HTMLElement {
+  static get observedAttributes() {
+    return ['error', 'required', 'label'];
+  }
+
   private static _cssSheets: CSSStyleSheet[] = (function () {
     let inputCss = new CSSStyleSheet();
     inputCss.replaceSync(styles);

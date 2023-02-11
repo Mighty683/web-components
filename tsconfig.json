@@ -5,7 +5,7 @@
     "target": "ESNext",
     "outDir": "dist",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "types": [],
+    "types": ["vitest/globals"],
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": false,

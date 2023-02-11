@@ -50,6 +50,7 @@ export function registerRenderFunction(): PropertyDecorator {
       value: target[key as keyof typeof target],
       writable: false,
       enumerable: false,
+      configurable: false,
     });
   };
 }
