@@ -1,5 +1,9 @@
 import { ThemeCss } from '../theme';
-import { registerComponent } from '../utils/decorators';
+import {
+  registerAttribute,
+  registerComponent,
+  registerRenderFunction,
+} from '../utils/decorators';
 import styles from './input.scss?inline';
 
 @registerComponent('web-input')
@@ -11,20 +15,19 @@ export class WebInput extends HTMLElement {
   })();
 
   private _shadowRoot: ShadowRoot;
-  private error: string | null;
-  private required: string | null;
-  private label: string | null;
+
+  @registerAttribute('error')
+  private readonly error?: string;
+  @registerAttribute('required')
+  private readonly required?: string;
+  @registerAttribute('label')
+  private readonly label?: string;
 
   constructor() {
     super();
     this._shadowRoot = this.attachShadow({ mode: 'closed' });
-    this.error = this.getAttribute('error');
-    this.required = this.getAttribute('required');
-    this.label = this.getAttribute('label');
+    this._shadowRoot.adoptedStyleSheets = WebInput._cssSheets;
     this.buildShadowRoot();
-    this.updateInputElement();
-    this.updateErrorElement();
-    this.updateLabelElement();
   }
 
   private buildTemplate() {
@@ -79,11 +82,15 @@ export class WebInput extends HTMLElement {
   }
 
   private attributeNameMatchCustomAttributes(name: string): boolean {
-    return name !== 'error' && name !== 'required';
+    return name !== 'error' && name !== 'required' && name !== 'label';
   }
 
+  @registerRenderFunction()
   private buildShadowRoot() {
+    this._shadowRoot.innerHTML = '';
     this._shadowRoot.appendChild(this.buildTemplate().content.cloneNode(true));
-    this._shadowRoot.adoptedStyleSheets = WebInput._cssSheets;
+    this.updateInputElement();
+    this.updateErrorElement();
+    this.updateLabelElement();
   }
 }

@@ -19,6 +19,7 @@ export function registerAttribute(name: string): PropertyDecorator {
   return function target(target, propertyKey) {
     if (target instanceof Element) {
       Object.defineProperty(target, 'attributeChangedCallback', {
+        configurable: true,
         value: new Proxy(target.attributeChangedCallback || new Function(), {
           apply(applyTarget, thisArg, argumentsList) {
             if (argumentsList[0] === name) {
@@ -46,7 +47,7 @@ export function registerAttribute(name: string): PropertyDecorator {
 export function registerRenderFunction(): PropertyDecorator {
   return function (target, key) {
     Object.defineProperty(target, '__renderFunction', {
-      value: target[key],
+      value: target[key as keyof typeof target],
       writable: false,
       enumerable: false,
     });

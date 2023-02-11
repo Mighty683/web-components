@@ -20,11 +20,12 @@ export class WebButton extends HTMLElement {
   private _shadowRoot: ShadowRoot;
 
   @registerAttribute('type')
-  readonly type: string | undefined;
+  readonly type?: string;
 
   constructor() {
     super();
     this._shadowRoot = this.attachShadow({ mode: 'closed' });
+    this._shadowRoot.adoptedStyleSheets = WebButton._cssSheets;
     this.buildShadowRoot();
   }
 
@@ -32,7 +33,6 @@ export class WebButton extends HTMLElement {
   private buildShadowRoot() {
     this._shadowRoot.innerHTML = '';
     this._shadowRoot.appendChild(this.buildButtonEl());
-    this._shadowRoot.adoptedStyleSheets = WebButton._cssSheets;
   }
 
   private buildButtonEl() {
