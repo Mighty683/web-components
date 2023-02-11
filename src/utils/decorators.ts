@@ -21,8 +21,10 @@ export function registerAttribute(name: string): PropertyDecorator {
       Object.defineProperty(target, 'attributeChangedCallback', {
         value: new Proxy(target.attributeChangedCallback || new Function(), {
           apply(applyTarget, thisArg, argumentsList) {
-            if (thisArg.__renderFunction) {
-              thisArg.__renderFunction();
+            if (argumentsList[0] === name) {
+              if (thisArg.__renderFunction) {
+                thisArg.__renderFunction();
+              }
             }
             return applyTarget(...argumentsList);
           },
