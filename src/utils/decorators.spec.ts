@@ -23,7 +23,7 @@ describe('decorators', () => {
   afterEach(() => {
     renderSpy.mockReset();
   });
-  describe('registerAttribute', () => {
+  describe('decorators synergy', () => {
     it('should call renderMethod', () => {
       //given
       //when
